@@ -2,38 +2,37 @@
 using namespace std;
 int main()
 {
-        vector<int>v;
-
-        int n,q,cnt=0,flag=0,d;
-        cin>>n>>q;
-        while(n!=0 && q!=0){
-        cnt++;
-        cout<<"CASE# "<<cnt<<":"<<endl;
-        for(int i=0;i<n;i++){
-            int j;
-            cin>>j;
-            v.push_back(j);
-        }
-        sort(v.begin(),v.end());
-        for(int a=0;a<q;a++){
-            int b;
-            cin>>b;
-            for(int c=0;c<v.size();c++){
-                if(b==v[c]){
-                flag=1;
-                d=c+1;
-                cout<<d<<endl;
-                break;
-                }
+    vector<int>v1;
+    vector<int>v2;
+    map<int,int>mp;
+    int n,m;
+    bool test=0;
+    cin>>n>>m;
+    for(int i=0;i<n;i++)
+    {
+        int k;cin>>k;
+        v1.push_back(k);
+        mp[k]=i+1;
+    }
+    for(int x=0;x<m;x++)
+    {
+        int y;
+        cin>>y;
+        v2.push_back(y);
+    }
+    for(int p=0;p<v2.size();p++)
+    {
+        printf("Case# %d\n",p+1);
+        for(int q=0;q<v1.size();q++)
+        {
+            if(v2[p]==v1[q])
+            {
+                test =1;
+               printf("%d Found at %d\n",v2[p],q+1);
+               break;
             }
-            if(flag==0){
-               // cout<<b<<' '<<"not found"<<endl;
-            }
-
         }
-
-     v.clear();
-        flag=0;
-}
-
+        if(test==0)
+            printf("%d not found\n",v2[p]);
+    }
 }
